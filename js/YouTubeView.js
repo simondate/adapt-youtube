@@ -13,7 +13,8 @@ export default class YouTubeView extends ComponentView {
     return {
       'click .js-youtube-inline-transcript-toggle': 'onToggleInlineTranscript',
       'click .js-youtube-external-transcript-click': 'onExternalTranscriptClicked',
-      'click .js-skip-to-transcript': 'onSkipToTranscript'
+      'click .js-skip-to-transcript': 'onSkipToTranscript',
+      'click .js-showvideo-btn': 'showVideo'
     };
   }
 
@@ -137,6 +138,22 @@ export default class YouTubeView extends ComponentView {
     _.delay(() => {
       a11y.focusFirst(this.$('.youtube__transcript-btn'), { defer: true });
     }, 250);
+  }
+
+  showVideo() {
+    this.$('.youtube__disclaimer-overlay').hide();
+    if(this.$('.youtube__remember-checkbox').is(":checked"))
+      this.applyConsentToAllVideos();
+  }
+
+  applyConsentToAllVideos() {
+    // set attribute to all components
+    Adapt.components.each(function(component) {
+      if (component.get('_component') !== 'youtube') return;
+      component.set({_consentGiven: true});
+    });
+    // hide any components currently visible
+    $('.youtube__disclaimer-overlay').hide();
   }
 
   onToggleInlineTranscript(e) {

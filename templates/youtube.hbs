@@ -27,7 +27,26 @@
     ERROR: No media source set!
     {{/if}}
 
+    {{#unless _consentGiven}}
+    <div class="youtube__disclaimer-overlay">
+        <div class="youtube__disclaimer-prompt">
+          <div class="youtube__disclaimer-prompt-inner">
+            <div class="youtube__disclaimer-prompt-title">Disclaimer</div>
+            <div class="youtube__disclaimer-prompt-body">This content is hosted by a third party. By showing the external content you accept the terms and conditions of youtube.com.</div>
+            <div class="youtube__remember">
+              <div class="youtube__remember-title">Remember my choice</div>
+              <input class="youtube__remember-checkbox" type="checkbox" id="{{_id}}-checkbox" name="{{_id}}-checkbox">
+              <label class="youtube__remember-label" for="{{_id}}-{{@index}}">Your choice will be saved and remembered for all 3rd party videos used in the module.</label>
+            </div>
+          </div>
+          <button class="btn-text youtube__showvideo-btn js-showvideo-btn" aria-label="Continue to video" tabindex="0">
+            <div class="icon-label">Continue to the video</div>
+            <div class="icon"></div>
+          </button>
+        </div>
+    </div>
   </div>
+  {{/unless}}
 
   {{#if _transcript}}
   <div class="youtube__transcript-container">
