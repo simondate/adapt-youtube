@@ -96,8 +96,41 @@
     .link-text;
   }
 }
-@media (max-width: 767px) {
+
+@media (max-width: @device-width-medium) {
   .youtube__disclaimer-overlay {
-    display: none;
+    justify-content: center;
+    align-items: start;
+    background-color: fade(@black, 70%);
+
+    .youtube__disclaimer-prompt {
+      background: transparent;
+      width: 100%;
+
+      &-inner {
+        margin: 0.5rem;
+        font-size: 14px;
+        color: @white;
+      }
+      .youtube__disclaimer-prompt-title {
+        color: @white;
+        font-size: 1.25rem;
+      }
+      .youtube__disclaimer-prompt-body {
+        margin: 0.5rem 0 0 0;
+        font-size: 13px;
+        a {
+          color: white;
+        }
+      }
+      .youtube__remember {
+        background: transparent;
+        padding: 0.5rem;
+      }
+      .youtube__showvideo-btn {
+        position: absolute;
+        bottom: 0;
+      }
+    }
   }
 }
