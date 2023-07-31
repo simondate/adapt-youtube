@@ -12,7 +12,7 @@
     &-overlay {
       height: 100%;
       width: 100%;
-      background-color: fade(@black, 30%);
+      background-color: fade(@black, 50%);
       position: absolute;
       top: 0;
       display: flex;
@@ -94,5 +94,10 @@
 
   &__transcript-body-inline a {
     .link-text;
+  }
+}
+@media (max-width: 767px) {
+  .youtube__disclaimer-overlay {
+    display: none;
   }
 }
